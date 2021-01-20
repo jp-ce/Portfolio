@@ -1,107 +1,95 @@
-
-
 AOS.init({ duration: 1000 });
 
-  window.onload = () =>{
-    document.querySelector(".home").setAttribute("id", "active");
-    
+//smooth scrolling
+
+const scroll = new SmoothScroll('a[href*="#"]', {
+  speed: 600,
+});
+
+window.onload = () => {
+  document.querySelector(".home").setAttribute("id", "active");
+};
+
+const home = document.getElementById("home");
+const about = document.getElementById("about");
+const work = document.getElementById("work");
+const contact = document.getElementById("contact");
+
+// Nav-links
+const homeLink = document.querySelector(".home");
+const aboutLink = document.querySelector(".about-link");
+const workLink = document.querySelector(".work");
+const contactLink = document.querySelector(".contact");
+
+const scrollBtn = document.querySelector(".scroll");
+
+//nav links active state
+window.addEventListener("scroll", () => {
+  const windo = window.pageYOffset;
+
+  if (about.offsetTop <= windo && work.offsetTop > windo) {
+    aboutLink.setAttribute("id", "active");
+    [workLink, contactLink, homeLink].map((a) =>
+      a.removeAttribute("id", "active")
+    );
+  } else if (work.offsetTop <= windo && contact.offsetTop > windo) {
+    workLink.setAttribute("id", "active");
+    [aboutLink, contactLink, homeLink].map((a) =>
+      a.removeAttribute("id", "active")
+    );
+  } else if (contact.offsetTop <= windo) {
+    contactLink.setAttribute("id", "active");
+    [workLink, aboutLink, homeLink].map((a) =>
+      a.removeAttribute("id", "active")
+    );
+  } else {
+    homeLink.setAttribute("id", "active");
+    [workLink, contactLink, aboutLink].map((a) =>
+      a.removeAttribute("id", "active")
+    );
   }
+});
 
-  let home = document.querySelector("#home");
-  let about = document.querySelector("#about");
-  let work = document.querySelector("#work");
-  let contact = document.querySelector("#contact");
+window.addEventListener("scroll", () => {
+  const windo = window.pageYOffset;
 
-  window.addEventListener("scroll", () => {
-    var windo = window.pageYOffset;
+  about.offsetTop < windo
+    ? scrollBtn.classList.add("appear")
+    : scrollBtn.classList.remove("appear");
+});
 
-    if ((about.offsetTop < windo || about.offsetTop == windo) && work.offsetTop > windo) {
-      
-      document.querySelector(".about-link").setAttribute("id", "active");
-      document.querySelector(".work").removeAttribute("id", "active");
-      document.querySelector(".contact").removeAttribute("id", "active");
-      document.querySelector(".home").removeAttribute("id", "active");
-    } else if (work.offsetTop <= windo && contact.offsetTop >= windo) {
-      
-      document.querySelector(".work").setAttribute("id", "active");
-      document.querySelector(".about-link").removeAttribute("id", "active");
-      document.querySelector(".contact").removeAttribute("id", "active");
-      document.querySelector(".home").removeAttribute("id", "active");
-    } else if (contact.offsetTop <= windo) {
-      
-      document.querySelector(".contact").setAttribute("id", "active");
-      document.querySelector(".work").removeAttribute("id", "active");
-      document.querySelector(".about-link").removeAttribute("id", "active");
-      document.querySelector(".home").removeAttribute("id", "active");
-    } else {
-      document.querySelector(".home").setAttribute("id", "active");
-      document.querySelector(".work").removeAttribute("id", "active");
-      document.querySelector(".contact").removeAttribute("id", "active");
-      document.querySelector(".about-link").removeAttribute("id", "active");
-    }
-  });
+//Menu burger
 
- 
-
-  window.addEventListener("scroll", () => {
-    var windo = window.pageYOffset;
-
-    if (about.offsetTop < windo ) {
-      
-      document.querySelector(".scroll").classList.add("appear");
-     
-    }else{
-      document.querySelector(".scroll").classList.remove("appear");
-
-    }
-  });
-
-
-  //smooth scrolling
-
-  const scroll = new SmoothScroll('a[href*="#"]',{
-    speed:600
-  });
-
-
-  //Menu burger 
-
-const menuBtn = document.querySelector('.menu-btn');
+const menuBtn = document.querySelector(".menu-btn");
 let menuOpen = false;
 let container = document.querySelector(".container");
 
-menuBtn.addEventListener('click', () => {
-  if(!menuOpen) {
-    menuBtn.classList.add('open');
-    menuOpen = true;
-  } else {
-    menuBtn.classList.remove('open');
-    menuOpen = false;
-  }
+menuBtn.addEventListener("click", () => {
+  toggleMenu();
 });
+
+const toggleMenu = () => {
+  !menuOpen ? menuBtn.classList.add("open") : menuBtn.classList.remove("open");
+  menuBtn.classList.contains("open") ? (menuOpen = true) : (menuOpen = false);
+};
 
 // menu collapsing when a link is clicked
 document.querySelector(".menu-btn").addEventListener("click", () => {
-  if (container.classList.contains("change"))
-  {
+  if (container.classList.contains("change")) {
     container.classList.remove("change");
     menuOpen = false;
-  } else{
+  } else {
     container.classList.add("change");
 
     // OOnly applies when yoou click a link/ targets only the first child
-  document.querySelectorAll(".menu-link, .social-media-link" ).forEach(el => {
-    el.addEventListener("click", () => {
-      menuBtn.classList.remove('open');
-      container.classList.remove("change");
-      menuOpen = false;
-    });
-  })
+    document
+      .querySelectorAll(".menu-link, .social-media-link")
+      .forEach((el) => {
+        el.addEventListener("click", () => {
+          menuBtn.classList.remove("open");
+          container.classList.remove("change");
+          menuOpen = false;
+        });
+      });
   }
 });
-
-
-
-
-
-
