@@ -1,3 +1,5 @@
+import { works } from "./works.js";
+
 AOS.init({ duration: 1000 });
 
 //smooth scrolling
@@ -20,6 +22,12 @@ const homeLink = document.querySelector(".home");
 const aboutLink = document.querySelector(".about-link");
 const workLink = document.querySelector(".work");
 const contactLink = document.querySelector(".contact");
+
+const menuBtn = document.querySelector(".menu-btn");
+let menuOpen = false;
+let container = document.querySelector(".container");
+
+const workSection = document.querySelector(".cards-wrapper");
 
 const scrollBtn = document.querySelector(".scroll");
 
@@ -60,10 +68,6 @@ window.addEventListener("scroll", () => {
 
 //Menu burger
 
-const menuBtn = document.querySelector(".menu-btn");
-let menuOpen = false;
-let container = document.querySelector(".container");
-
 menuBtn.addEventListener("click", () => {
   toggleMenu();
 });
@@ -93,3 +97,25 @@ document.querySelector(".menu-btn").addEventListener("click", () => {
       });
   }
 });
+
+//works section
+workSection.innerHTML = works
+  .map((item) => {
+    const { image, title, type, description, link } = item;
+
+    return `
+  <div class="card" data-tilt>
+            <div class="card-img-wrapper">
+              <img src=${image} alt=${title} />
+            </div>
+            <div class="card-info">
+              <h2>${title}</h2>
+              <p>${type} <br />${description}</p>
+              <a href=${link} target="_blank"
+                ><button>View Website</button></a
+              >
+            </div>
+          </div>
+  `;
+  })
+  .join("");
