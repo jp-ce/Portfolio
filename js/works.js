@@ -1,6 +1,14 @@
 export const works = [
   {
     id: 1,
+    image: "img/AnimeCatalogue.PNG",
+    title: "AnimeCatalogue",
+    type: "(Desktop First)",
+    description: "React Application",
+    link: "https://anime-catalogue.netlify.app/",
+  },
+  {
+    id: 2,
     image: "img/Ecommerce-website.PNG",
     title: "TopApparel",
     type: "(Desktop First)",
@@ -8,7 +16,7 @@ export const works = [
     link: "https://jp-ce.github.io/Ecommerce/",
   },
   {
-    id: 2,
+    id: 3,
     image: "img/travel-website.PNG",
     title: "Philippines",
     type: "(Desktop First)",
@@ -16,21 +24,14 @@ export const works = [
     link: "https://jp-ce.github.io/Travel-Website/",
   },
   {
-    id: 3,
+    id: 4,
     image: "img/fitnesswebsite.PNG",
     title: "FinleyFitness",
     type: "(Desktop First)",
     description: "Sample Fitness Website",
     link: "https://jp-ce.github.io/Fitness-Program-Website/",
   },
-  {
-    id: 4,
-    image: "img/web4.jpg",
-    title: "Coming soon!",
-    type: "(ANY)",
-    description: "Not yet available",
-    link: "img/web4.jpg",
-  },
+
   {
     id: 5,
     image: "img/web5.jpg",
