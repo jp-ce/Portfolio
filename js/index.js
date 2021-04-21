@@ -101,7 +101,7 @@ document.querySelector(".menu-btn").addEventListener("click", () => {
 //works section
 workSection.innerHTML = works
   .map((item) => {
-    const { image, title, type, description, link } = item;
+    const { id, image, title, type, description, link } = item;
 
     return `
   <div class="card" data-tilt>
@@ -111,11 +111,76 @@ workSection.innerHTML = works
             <div class="card-info">
               <h2>${title}</h2>
               <p>${type} <br />${description}</p>
-              <a href=${link} target="_blank"
-                ><button>View Website</button></a
+              <a id=${id} class="work-showcase-item" target="_blank"
+                ><button>View More</button></a
               >
             </div>
           </div>
   `;
   })
   .join("");
+
+const workItems = document.querySelectorAll(".work-showcase-item");
+const modal = document.querySelector(".modal-overlay");
+const modalContainer = document.querySelector(".modal-container");
+
+let currentClickedItem;
+
+[...workItems].forEach((x) =>
+  x.addEventListener("click", () => {
+    currentClickedItem = works.filter((currItem) => currItem.id === x.id);
+
+    modal.classList.add("open-modal");
+
+    modalContainer.innerHTML = currentClickedItem
+      .map((currentClicked) => {
+        const {
+          image,
+          title,
+          link,
+          webTechnologies,
+          about,
+          repoLink,
+        } = currentClicked;
+
+        return `
+          <div class="modal-img-container">
+            <img src=${image} alt=${title} />
+          </div>
+
+          <div class="right-content">
+            <h3 class="title">${title}</h3>
+            <div class="web-technologies">
+          ${webTechnologies.map((w) => `<p>${w}</p>`).join("")}
+            </div>
+            <div class="about-showcase">
+              <h3 class="about-heading">About</h3>
+              <p class="about-description">
+                ${about
+                  .map((sentences) => {
+                    return `<p>${sentences}</p>`;
+                  })
+                  .join("")}
+              </p>
+            </div>
+            <div class="item-links">
+              <a href=${link} class="demo"target="_blank"><button>Demo</button></a>
+              <a href=${repoLink} class= "repo" target="_blank"><button>Repository</button></a>
+            </div>
+          </div>
+      
+    `;
+      })
+      .join("");
+  })
+);
+
+const closeBtn = document.querySelector(".close-btn");
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.remove("open-modal");
+});
+
+const copyrightDate = document.querySelector(".copyright-date");
+const year = new Date().getFullYear();
+copyrightDate.textContent = `${year}`;
