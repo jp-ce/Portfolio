@@ -46,6 +46,28 @@ export const works = [
   },
   {
     id: "work-showcase-3",
+    image: "img/weatherwatcher.PNG",
+    title: "WeatherWatch",
+    type: "(Desktop First)",
+    description: "Simple React Weather Application",
+    link: "https://weatherwatcher.netlify.app/",
+    webTechnologies: [
+      "HTML & CSS",
+      "JavaScript",
+      "React.js",
+      "API",
+      "SASS",
+      "Responsive",
+      "UI/UX",
+    ],
+    about: [
+      "A simple yet an attractive weather app.  Search any city in the world and find out its current temperature! Or search for your city and find out whether if it is a day for a jacket or a t-shirt",
+      "This app uses the OpenWeatherMap API to display current weather conditions based on a search term, in this case a city or a country.",
+    ],
+    repoLink: "https://github.com/jp-ce/WeatherWatch",
+  },
+  {
+    id: "work-showcase-4",
     image: "img/Ecommerce-website.PNG",
     title: "TopApparel",
     type: "(Desktop First)",
@@ -66,7 +88,7 @@ export const works = [
     repoLink: "https://github.com/jp-ce/Ecommerce",
   },
   {
-    id: "work-showcase-4",
+    id: "work-showcase-5",
     image: "img/travel-website.PNG",
     title: "Philippines",
     type: "(Desktop First)",
@@ -85,7 +107,7 @@ export const works = [
     repoLink: "https://github.com/jp-ce/Travel-Website",
   },
   {
-    id: "work-showcase-5",
+    id: "work-showcase-6",
     image: "img/fitnesswebsite.PNG",
     title: "FinleyFitness",
     type: "(Desktop First)",
@@ -96,17 +118,5 @@ export const works = [
       "A mock-up fitness website.  Includes a landing page, about, features, testimonials, as well as a contact page.",
     ],
     repoLink: "https://github.com/jp-ce/Fitness-Program-Website",
-  },
-
-  {
-    id: "work-showcase-6",
-    image: "img/web6.jpg",
-    title: "Coming soon!",
-    type: "(ANY)",
-    description: "Not yet available",
-    link: "img/web6.jpg",
-    webTechnologies: ["N/A"],
-    about: ["Project not yet available. Coming Soon!"],
-    repoLink: "img/web6.jpg",
   },
 ];
